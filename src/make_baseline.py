@@ -58,14 +58,16 @@ def summarize(df: pd.DataFrame) -> dict:
     """Agregados sobre o test set. Fatias sem tumor têm Dice 0 por definição
     matemática, então as métricas de qualidade usam apenas fatias com tumor."""
     tumor = df[df.has_tumor_gt == 1]
+    # Sem arredondar: este arquivo é referência de regressão, não relatório.
+    # Arredondar aqui faz um teste legítimo divergir por ruído de formatação.
     return {
         "n_slices": int(len(df)),
         "n_slices_com_tumor": int(len(tumor)),
-        "dice_tumor": round(float(tumor.dice.mean()), 6),
-        "iou_tumor": round(float(tumor.iou.mean()), 6),
-        "precision_tumor": round(float(tumor.precision.mean()), 6),
-        "recall_tumor": round(float(tumor.recall.mean()), 6),
-        "acuracia_deteccao": round(float((df.has_tumor_gt == df.has_tumor_pred).mean()), 6),
+        "dice_tumor": float(tumor.dice.mean()),
+        "iou_tumor": float(tumor.iou.mean()),
+        "precision_tumor": float(tumor.precision.mean()),
+        "recall_tumor": float(tumor.recall.mean()),
+        "acuracia_deteccao": float((df.has_tumor_gt == df.has_tumor_pred).mean()),
     }
 
 

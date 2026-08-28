@@ -1,5 +1,5 @@
 {
-  "criado_em": "2026-08-28T20:21:28+00:00",
+  "criado_em": "2026-08-28T20:39:06+00:00",
   "run": "unetpp_efficientnet-b2_v1",
   "modelo": {
     "model": "unetpp",
@@ -15,7 +15,7 @@
     "bytes": 121689849
   },
   "codigo": {
-    "commit": "e5d5a0df63e9a261795ffcd62fb877fa6afafdfe"
+    "commit": "4ddae794eb22bd1695e8b6af4c7714b72f07ed67"
   },
   "ambiente": {
     "python": "3.11.15",
@@ -27,10 +27,10 @@
   "metricas_teste": {
     "n_slices": 589,
     "n_slices_com_tumor": 230,
-    "dice_tumor": 0.74281,
-    "iou_tumor": 0.655733,
-    "precision_tumor": 0.745828,
-    "recall_tumor": 0.818877,
-    "acuracia_deteccao": 0.882852
+    "dice_tumor": 0.7428096043478261,
+    "iou_tumor": 0.6557325260869566,
+    "precision_tumor": 0.7458276217391303,
+    "recall_tumor": 0.8188767173913042,
+    "acuracia_deteccao": 0.8828522920203735
   }
 }
