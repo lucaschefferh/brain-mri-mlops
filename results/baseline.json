@@ -1,0 +1,36 @@
+{
+  "criado_em": "2026-08-28T20:21:28+00:00",
+  "run": "unetpp_efficientnet-b2_v1",
+  "modelo": {
+    "model": "unetpp",
+    "backbone": "efficientnet-b2",
+    "epoch": 32,
+    "val_dice": 0.7782294011572332,
+    "val_iou": 0.6836080392510697,
+    "threshold": 0.5
+  },
+  "checkpoint": {
+    "arquivo": "unetpp_efficientnet-b2_v1_best.pth",
+    "sha256": "a84b65ce672562cdc7b1dc13ced6eb4fff90235e23e142c62d9d5596cb3321e4",
+    "bytes": 121689849
+  },
+  "codigo": {
+    "commit": "e5d5a0df63e9a261795ffcd62fb877fa6afafdfe"
+  },
+  "ambiente": {
+    "python": "3.11.15",
+    "torch": "2.13.0+cu130",
+    "opencv": "4.14.0",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  },
+  "metricas_teste": {
+    "n_slices": 589,
+    "n_slices_com_tumor": 230,
+    "dice_tumor": 0.74281,
+    "iou_tumor": 0.655733,
+    "precision_tumor": 0.745828,
+    "recall_tumor": 0.818877,
+    "acuracia_deteccao": 0.882852
+  }
+}
