@@ -32,10 +32,9 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 
 sys.path.insert(0, str(Path(__file__).parent))
-from dataset import BrainMRIDataset, VAL_TRANSFORMS
-from models import MODEL_MAP, build_model
+from dataset import VAL_TRANSFORMS, BrainMRIDataset
 from metrics import per_sample_metrics
-
+from models import build_model
 
 # ─────────────────────────────────────────────────────────────────
 # Checkpoint
@@ -162,7 +161,7 @@ def save_results(
     print(f"\nResultados salvos em: {out_dir.resolve()}")
     print(f"  test_predictions.csv  ({len(records)} amostras)")
     print(f"  pred_masks.npy        {pred_masks.shape}")
-    print(f"  model_info.json")
+    print("  model_info.json")
 
 
 # ─────────────────────────────────────────────────────────────────

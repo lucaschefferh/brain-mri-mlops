@@ -16,15 +16,13 @@ Estrutura esperada em data_dir:
             masks/
 """
 
-import cv2
-import numpy as np
 from pathlib import Path
 
-import torch
-from torch.utils.data import Dataset, DataLoader
 import albumentations as A
+import cv2
+import numpy as np
 from albumentations.pytorch import ToTensorV2
-
+from torch.utils.data import DataLoader, Dataset
 
 # ─────────────────────────────────────────────────────────────────
 # Transforms

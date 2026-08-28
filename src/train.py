@@ -20,17 +20,16 @@ import csv
 import time
 from pathlib import Path
 
+import albumentations as A
+import segmentation_models_pytorch as smp
 import torch
 import torch.nn as nn
-import segmentation_models_pytorch as smp
 from torch.optim import Adam
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 
-import albumentations as A
-from dataset import get_dataloaders, TRAIN_TRANSFORMS
-from models import MODEL_MAP, build_model
+from dataset import TRAIN_TRANSFORMS, get_dataloaders
 from metrics import dice_coefficient, iou_score
-
+from models import MODEL_MAP, build_model
 
 # ─────────────────────────────────────────────────────────────────
 # Versionamento de runs
@@ -119,7 +118,7 @@ def run_epoch(model, loader, criterion, optimizer, device, training: bool, scale
                 # validação: per-sample apenas em fatias com tumor
                 # torna val_dice comparável ao test_dice (with_tumor) da inferência
                 preds_bin = (torch.sigmoid(preds) > 0.5).float()
-                for pred_s, mask_s in zip(preds_bin, masks):
+                for pred_s, mask_s in zip(preds_bin, masks, strict=True):
                     if mask_s.sum() > 0:
                         inter = (pred_s * mask_s).sum()
                         total_dice += (2.0 * inter / (pred_s.sum() + mask_s.sum() + 1e-7)).item()
@@ -153,7 +152,8 @@ def train(cfg: dict):
 
     dice_loss = smp.losses.DiceLoss(mode="binary", from_logits=True)
     bce_loss  = nn.BCEWithLogitsLoss()
-    criterion = lambda preds, masks: 0.5 * dice_loss(preds, masks) + 0.5 * bce_loss(preds, masks)
+    def criterion(preds, masks):
+        return 0.5 * dice_loss(preds, masks) + 0.5 * bce_loss(preds, masks)
 
     encoder_params = [p for n, p in model.named_parameters() if n.startswith("encoder")]
     decoder_params = [p for n, p in model.named_parameters() if not n.startswith("encoder")]

@@ -8,7 +8,6 @@ Importado por train.py e inference.py para evitar duplicação.
 import segmentation_models_pytorch as smp
 import torch.nn as nn
 
-
 MODEL_MAP = {
     "unet":       smp.Unet,
     "unetpp":     smp.UnetPlusPlus,

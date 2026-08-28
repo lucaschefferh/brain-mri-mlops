@@ -16,7 +16,7 @@ import hashlib
 import json
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pandas as pd
@@ -82,7 +82,7 @@ def main() -> None:
     ckpt = Path(args.checkpoints) / f"{run_dir.name}_best.pth"
 
     baseline = {
-        "criado_em": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "criado_em": datetime.now(UTC).isoformat(timespec="seconds"),
         "run": run_dir.name,
         "modelo": {**info, "threshold": args.threshold},
         "checkpoint": {

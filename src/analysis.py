@@ -22,14 +22,14 @@ from pathlib import Path
 
 import cv2
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).parent))
-from dataset import BrainMRIDataset, VAL_TRANSFORMS
-
+from dataset import VAL_TRANSFORMS, BrainMRIDataset
 
 # ─────────────────────────────────────────────────────────────────
 # Carregamento de dados
@@ -54,7 +54,7 @@ def find_results_dir(results_root: Path) -> Path:
         nomes = [c.name for c in candidates]
         print(f"Múltiplas pastas de resultados encontradas: {nomes}")
         print(f"Usando a mais recente: {candidates[-1].name}")
-        print(f"Use --predictions para especificar outra.\n")
+        print("Use --predictions para especificar outra.\n")
     return candidates[-1]
 
 
@@ -165,7 +165,7 @@ def save_metrics_histogram(df: pd.DataFrame, out_path: Path):
     """Salva histogramas de Dice e IoU separados por presença de tumor."""
     fig, axes = plt.subplots(1, 2, figsize=(12, 4))
 
-    for ax, metric in zip(axes, ["dice", "iou"]):
+    for ax, metric in zip(axes, ["dice", "iou"], strict=True):
         with_tumor    = df.loc[df["has_tumor_gt"] == 1, metric]
         without_tumor = df.loc[df["has_tumor_gt"] == 0, metric]
         mean          = df[metric].mean()

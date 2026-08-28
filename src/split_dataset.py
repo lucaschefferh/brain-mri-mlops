@@ -29,7 +29,6 @@ import random
 import shutil
 from pathlib import Path
 
-
 SOURCE_DIR  = Path("archive/kaggle_3m")
 OUTPUT_DIR  = Path("dataset")
 TRAIN_RATIO = 0.70
