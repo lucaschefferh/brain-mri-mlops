@@ -1,0 +1,7 @@
+{
+  "model": "unetpp",
+  "backbone": "efficientnet-b4",
+  "epoch": 55,
+  "val_dice": 0.6032452415197324,
+  "val_iou": 0.5405443494136517
+}

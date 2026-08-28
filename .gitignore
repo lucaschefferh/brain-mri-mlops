@@ -1,0 +1,24 @@
+# Dados (symlinks para o repositório de origem; versionados via DVC adiante)
+archive
+dataset
+checkpoints
+
+# Pesos e artefatos de modelo
+*.pth
+*.onnx
+models/
+
+# Máscaras preditas — regeneráveis pela inferência
+results/**/*.npy
+
+# Ambiente
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# IDE / SO
+.vscode/
+.idea/
+.DS_Store

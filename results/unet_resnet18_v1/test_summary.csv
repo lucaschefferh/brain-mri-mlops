@@ -1,0 +1,4 @@
+subset,n_samples,dice_mean,dice_std,dice_median,dice_min,dice_max,iou_mean,iou_std,iou_median,iou_min,iou_max,precision_mean,precision_std,precision_median,precision_min,precision_max,recall_mean,recall_std,recall_median,recall_min,recall_max,tumor_detection_accuracy,checkpoint_model,checkpoint_backbone,checkpoint_epoch,val_dice,val_iou
+all,589,0.265997,0.397598,0.0,0.0,0.964657,0.235309,0.359106,0.0,0.0,0.931726,0.285519,0.415369,0.0,0.0,1.0,0.270065,0.409223,0.0,0.0,1.0,0.903226,unet,resnet18,35.0,0.7514168597561749,0.6620458510735531
+with_tumor,230,0.681183,0.349081,0.858562,0.0,0.964657,0.602595,0.329894,0.752175,0.0,0.931726,0.731177,0.340189,0.885784,0.0,1.0,0.691601,0.370386,0.883863,0.0,1.0,,,,,,
+without_tumor,359,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,,,,

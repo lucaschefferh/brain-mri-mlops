@@ -1,0 +1,7 @@
+{
+  "model": "unet",
+  "backbone": "resnet34",
+  "epoch": 19,
+  "val_dice": 0.6115767451433035,
+  "val_iou": 0.5408277282348046
+}

@@ -1,0 +1,19 @@
+# ── Núcleo de treino e inferência ────────────────────────────────
+torch>=2.4,<3
+torchvision>=0.19,<1
+segmentation-models-pytorch>=0.5.0   # models.py usa decoder_dropout (0.5+)
+timm>=1.0
+albumentations>=2.0                  # dataset.py usa as assinaturas 2.x
+opencv-python-headless>=4.10,<5        # 4.x: decodificador validado contra o baseline
+numpy>=2.0
+pandas>=2.2,<3                       # 3.0 muda copy-on-write e dtype de string
+matplotlib>=3.9
+tqdm>=4.66
+
+# ── Export e runtime (Fase 01+) ──────────────────────────────────
+onnx>=1.17
+onnxruntime>=1.20
+
+# ── Qualidade ────────────────────────────────────────────────────
+pytest>=8
+ruff>=0.8

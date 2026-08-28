@@ -1,0 +1,19 @@
+[project]
+name = "brain-seg"
+version = "0.1.0"
+description = "Segmentação de glioma de baixo grau em MRI — pipeline de MLOps"
+requires-python = ">=3.11,<3.12"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]   # comprimento de linha já é tratado pelo formatter
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: roda sobre o test set completo (589 fatias); pulado no CI rápido",
+]
